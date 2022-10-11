@@ -1,5 +1,7 @@
 package br.com.order.management.model;
 
+import br.com.order.management.enumeration.Role;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,9 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private Role role;
     private List<Request> requests = new ArrayList<>();
+    private List<RequestStage> requestStages = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -43,11 +47,27 @@ public class User {
         this.password = password;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public List<Request> getRequests() {
         return requests;
     }
 
     public void setRequests(List<Request> requests) {
         this.requests = requests;
+    }
+
+    public List<RequestStage> getRequestStages() {
+        return requestStages;
+    }
+
+    public void setRequestStages(List<RequestStage> requestStages) {
+        this.requestStages = requestStages;
     }
 }

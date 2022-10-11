@@ -4,7 +4,7 @@ spring:
   profiles:
     active: local
 DATASOURCE:
-  URL: jdbc:mysql://localhost:3306/testes
+  URL: jdbc:mysql://localhost:3306/order
   DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
   POOL_NAME: order-management
   CONNECTION_TIMEOUT: 60000

@@ -6,10 +6,11 @@ import br.com.order.management.repository.sql.OrderManagementQuerys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Locale;
 
+@Repository
 public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
@@ -18,13 +19,12 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void save(User user) {
         MapSqlParameterSource source = new MapSqlParameterSource();
-        source.addValue("", user.getName());
-        source.addValue("", user.getEmail());
-        source.addValue("",user.getPassword());
-        source.addValue("", user.getRole());
-        source.addValue("", user.getRequests());
+        source.addValue("name", user.getName());
+        source.addValue("email", user.getEmail());
+        source.addValue("password",user.getPassword());
+        source.addValue("role", user.getRole());
 
-        jdbcTemplate.update(OrderManagementQuerys.Insert, source);
+        jdbcTemplate.update(OrderManagementQuerys.INSERT, source);
     }
 
     @Override

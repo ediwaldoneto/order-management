@@ -2,5 +2,10 @@ package br.com.order.management.repository.sql;
 
 public class OrderManagementQuerys {
 
-    public static final String Insert = "";
+    private OrderManagementQuerys() {
+    }
+
+    public static final String INSERT = "INSERT INTO `order`.`user` " +
+            " (email, name, password, `role`) " +
+            " VALUES(:email, :name, :password, :role)";
 }

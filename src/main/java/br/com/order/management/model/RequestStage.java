@@ -1,7 +1,5 @@
 package br.com.order.management.model;
 
-import br.com.order.management.enumeration.RequestState;
-
 import java.util.Date;
 
 public class RequestStage {
@@ -9,7 +7,7 @@ public class RequestStage {
     private Long id;
     private String description;
     private Date dateOfRealization;
-    private RequestState requestState;
+    private String requestState;
     private Request request;
     private User user;
 
@@ -37,11 +35,11 @@ public class RequestStage {
         this.dateOfRealization = dateOfRealization;
     }
 
-    public RequestState getRequestState() {
+    public String getRequestState() {
         return requestState;
     }
 
-    public void setRequestState(RequestState requestState) {
+    public void setRequestState(String requestState) {
         this.requestState = requestState;
     }
 

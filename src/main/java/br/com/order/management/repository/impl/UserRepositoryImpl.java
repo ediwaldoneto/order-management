@@ -4,6 +4,7 @@ import br.com.order.management.model.User;
 import br.com.order.management.repository.UserRepository;
 import br.com.order.management.repository.sql.OrderManagementQuerys;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -24,12 +25,14 @@ public class UserRepositoryImpl implements UserRepository {
         source.addValue("password",user.getPassword());
         source.addValue("role", user.getRole());
 
-        jdbcTemplate.update(OrderManagementQuerys.INSERT, source);
+        jdbcTemplate.update(OrderManagementQuerys.INSERT_USER, source);
     }
 
     @Override
     public User findById(Long id) {
-        return null;
+        MapSqlParameterSource source = new MapSqlParameterSource();
+        source.addValue("id", id);
+        return jdbcTemplate.queryForObject(OrderManagementQuerys.SEARCH_BY_ID, source, mapperUser());
     }
 
     @Override
@@ -39,11 +42,24 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> findAll() {
-        return null;
+        return jdbcTemplate.query(OrderManagementQuerys.FIND_ALL, mapperUser());
     }
 
     @Override
     public User update() {
         return null;
+    }
+
+
+    private RowMapper<User> mapperUser(){
+        return (rs, rowNum) -> {
+         final User user = new User();
+         user.setId(rs.getLong("ID"));
+         user.setName(rs.getString("NOME"));
+         user.setEmail(rs.getNString("EMAIL"));
+         user.setPassword(rs.getString("PASSWORD"));
+         user.setRole(rs.getString("ROLE"));
+         return user;
+        };
     }
 }

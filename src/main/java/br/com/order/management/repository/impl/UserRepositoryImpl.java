@@ -22,7 +22,7 @@ public class UserRepositoryImpl implements UserRepository {
         MapSqlParameterSource source = new MapSqlParameterSource();
         source.addValue("name", user.getName());
         source.addValue("email", user.getEmail());
-        source.addValue("password",user.getPassword());
+        source.addValue("password", user.getPassword());
         source.addValue("role", user.getRole());
 
         jdbcTemplate.update(OrderManagementQuerys.INSERT_USER, source);
@@ -46,20 +46,21 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User update() {
-        return null;
+    public void update(Long id) {
+        MapSqlParameterSource source = new MapSqlParameterSource();
+        source.addValue("id", id);
+        jdbcTemplate.update(OrderManagementQuerys.UPDATE_USER, source);
     }
 
-
-    private RowMapper<User> mapperUser(){
+    private RowMapper<User> mapperUser() {
         return (rs, rowNum) -> {
-         final User user = new User();
-         user.setId(rs.getLong("ID"));
-         user.setName(rs.getString("NOME"));
-         user.setEmail(rs.getNString("EMAIL"));
-         user.setPassword(rs.getString("PASSWORD"));
-         user.setRole(rs.getString("ROLE"));
-         return user;
+            final User user = new User();
+            user.setId(rs.getLong("ID"));
+            user.setName(rs.getString("NOME"));
+            user.setEmail(rs.getNString("EMAIL"));
+            user.setPassword(rs.getString("PASSWORD"));
+            user.setRole(rs.getString("ROLE"));
+            return user;
         };
     }
 }

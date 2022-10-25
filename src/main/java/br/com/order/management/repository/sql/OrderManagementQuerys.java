@@ -12,4 +12,5 @@ public class OrderManagementQuerys {
     public static final String SEARCH_BY_ID = "SELECT * fROM `user` u WHERE id = :id";
     public static final String UPDATE_USER = "UPDATE `user` SET email = :email, name = :name, password = :password, role = :role WHERE id = :id ";
 
+    public static final String DELETE_USER = "DELETE FROM user WHERE id = :id";
 }

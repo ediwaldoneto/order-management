@@ -37,7 +37,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void delete(Long id) {
-        // TODO document why this method is empty
+        MapSqlParameterSource source = new MapSqlParameterSource();
+        source.addValue("id", id);
+        jdbcTemplate.update(OrderManagementQuerys.DELETE_USER, source);
     }
 
     @Override

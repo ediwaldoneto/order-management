@@ -1,10 +1,7 @@
 package br.com.order.management.model;
 
-import br.com.order.management.enumeration.RequestState;
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 
 public class Request {
 
@@ -12,9 +9,8 @@ public class Request {
     private String subject;
     private String description;
     private Date creationDate;
-    private RequestState requestState;
-    private User user;
-    private List<RequestStage> requestStages = new ArrayList<>();
+    private String requestState;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -48,27 +44,19 @@ public class Request {
         this.creationDate = creationDate;
     }
 
-    public RequestState getRequestState() {
+    public String getRequestState() {
         return requestState;
     }
 
-    public void setRequestState(RequestState requestState) {
+    public void setRequestState(String requestState) {
         this.requestState = requestState;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<RequestStage> getRequestStages() {
-        return requestStages;
-    }
-
-    public void setRequestStages(List<RequestStage> requestStages) {
-        this.requestStages = requestStages;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

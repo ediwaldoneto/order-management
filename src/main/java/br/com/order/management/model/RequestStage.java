@@ -8,8 +8,8 @@ public class RequestStage {
     private String description;
     private Date dateOfRealization;
     private String requestState;
-    private Request request;
-    private User user;
+    private Long requestId;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -43,19 +43,19 @@ public class RequestStage {
         this.requestState = requestState;
     }
 
-    public Request getRequest() {
-        return request;
+    public Long getRequestId() {
+        return requestId;
     }
 
-    public void setRequest(Request request) {
-        this.request = request;
+    public void setRequestId(Long requestId) {
+        this.requestId = requestId;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

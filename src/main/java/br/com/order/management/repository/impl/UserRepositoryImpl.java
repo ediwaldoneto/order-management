@@ -56,7 +56,7 @@ public class UserRepositoryImpl implements UserRepository {
         return (rs, rowNum) -> {
             final User user = new User();
             user.setId(rs.getLong("ID"));
-            user.setName(rs.getString("NOME"));
+            user.setName(rs.getString("NAME"));
             user.setEmail(rs.getNString("EMAIL"));
             user.setPassword(rs.getString("PASSWORD"));
             user.setRole(rs.getString("ROLE"));

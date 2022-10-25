@@ -46,9 +46,13 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void update(Long id) {
+    public void update(User user) {
         MapSqlParameterSource source = new MapSqlParameterSource();
-        source.addValue("id", id);
+        source.addValue("id", user.getId());
+        source.addValue("name", user.getName());
+        source.addValue("email", user.getEmail());
+        source.addValue("password", user.getPassword());
+        source.addValue("role", user.getRole());
         jdbcTemplate.update(OrderManagementQuerys.UPDATE_USER, source);
     }
 

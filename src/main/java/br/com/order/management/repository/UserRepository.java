@@ -10,5 +10,5 @@ public interface UserRepository {
     public User findById(Long id);
     public void delete(Long id);
     public List<User> findAll();
-    public void update(Long id);
+    public void update(User user);
 }
